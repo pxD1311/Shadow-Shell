@@ -1,6 +1,6 @@
 #include "config.h"
 
-const char *VERSION = "1.0 Alpha";
+const char *VERSION = "1.1 Alpha";
 const int MAX_INPUT_LENGTH = 1000;
 
 const char *CMD_PRINT_CWD = "pd";
