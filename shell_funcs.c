@@ -8,7 +8,6 @@ char* user_input()
         raise_insufficient_memory_error();
         return (char*)NULL;
     }
-    printf("<<< ");
     if (fgets(input, MAX_INPUT_LENGTH, stdin) == NULL)
     {
         raise_invalid_input_error();
@@ -25,7 +24,7 @@ char* user_input()
     return input;
 }
 
-int execute_no_arg_command(char* command)
+int execute_no_arg_command(const char* command)
 {
     if (system(command) != 0)
     {
@@ -35,7 +34,7 @@ int execute_no_arg_command(char* command)
     return 0;
 }
 
-int execute_arg_command(char* command, char* args)
+int execute_arg_command(const char* command, const char* args)
 {
     //+1 for space between command and arguement and +1 for null char
     int command_len = strlen(command) + strlen(args) + 2;

@@ -7,6 +7,6 @@
 #include "error.h"
 
 char* user_input();
-int execute_no_arg_command(char* command);
-int execute_arg_command(char* command, char* args);
+int execute_no_arg_command(const char* command);
+int execute_arg_command(const char* command, const char* args);
 void quit_shell();

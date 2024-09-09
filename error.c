@@ -14,3 +14,8 @@ void raise_invalid_input_error()
 {
     printf("\nError : INVALID input\n");
 }
+
+void raise_command_not_found_error()
+{
+    printf("\nError : command not found\n");
+}
