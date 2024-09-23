@@ -1,7 +1,7 @@
 A Shell for Windows, Macos and Linux. for now windows is implemented yet.
 Commands :
 
-________________________________________________________________________________
+
 | Command    | Purpose                                     | Status            |
 |------------|---------------------------------------------|-------------------|
 | `dd`       | Display directory items                     | Working           |
@@ -15,7 +15,7 @@ ________________________________________________________________________________
 | `crd`      | Create a directory                          | Working           |
 | `clrscr`   | Clear the screen                            | Working           |
 | `quit`     | Quit the shell                              | Working           |
-|____________|_____________________________________________|___________________|
+
 
 
 stay tuned for further updates :)
