@@ -1,6 +1,8 @@
 A Shell for Windows, Macos and Linux. for now windows is implemented yet.
 Commands :
 
+Shadow shell v 1.3.1-ALPHA
+
 ________________________________________________________________________________
 | Command    | Purpose                                     | Status            |
 |------------|---------------------------------------------|-------------------|
@@ -19,4 +21,4 @@ ________________________________________________________________________________
 
 
 stay tuned for further updates :)
-                                   -Parth Joshi
+-Parth Joshi

@@ -172,7 +172,67 @@ BOOL create_directory(const wchar_t *path)
 }
 
 //clear terminal screen
-int clear_screen()
+BOOL clear_screen()
 {
     return system("cls");
+}
+
+BOOL copy_file(const wchar_t *source_path, const wchar_t *destination_path)
+{
+    FILE *fptr_s = _wfopen(source_path, L"r");
+    FILE *fptr_d = _wfopen(destination_path, L"w");
+    if (fptr_s == NULL || fptr_d == NULL)
+    {
+        if(fptr_s != NULL)
+            fclose(fptr_s);
+        if(fptr_d != NULL)
+        {
+            remove_file(destination_path);
+            fclose(fptr_d);
+        }
+        return FALSE;
+    }
+    wchar_t chr;
+
+    while((chr = getwc(fptr_s)) != WEOF)
+    {
+        if(putwc(chr, fptr_d) == WEOF)
+        {
+            fclose(fptr_s);
+            fclose(fptr_d);
+            remove_file(destination_path);
+            return FALSE;
+        }
+    }
+    fclose(fptr_s);
+    fclose(fptr_d);
+    return TRUE;
+}
+
+BOOL move_file(const wchar_t *source_path, const wchar_t *destination_path)
+{
+    if(copy_file(source_path, destination_path) == TRUE)
+        return remove_file(source_path);
+    return FALSE;
+}
+
+BOOL remove_file(const wchar_t *path)
+{
+    return DeleteFileW(path);
+}
+
+
+BOOL copy_dir(const wchar_t *source_path, const wchar_t *destination_path)
+{
+
+}
+
+BOOL move_dir(const wchar_t *source_path, const wchar_t *destination_path)
+{
+
+}
+
+BOOL remove_dir(const wchar_t *path)
+{
+
 }
