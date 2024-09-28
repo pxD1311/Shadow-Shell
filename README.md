@@ -1,9 +1,13 @@
 A Shell for Windows, Macos and Linux. for now windows is implemented yet.
 Commands :
 
+<<<<<<< HEAD
 Shadow shell v 1.3.1-ALPHA
 
 ________________________________________________________________________________
+=======
+
+>>>>>>> 06c879dec71d3a2460ab869c3a069af85b47de3d
 | Command    | Purpose                                     | Status            |
 |------------|---------------------------------------------|-------------------|
 | `dd`       | Display directory items                     | Working           |
@@ -17,7 +21,7 @@ ________________________________________________________________________________
 | `crd`      | Create a directory                          | Working           |
 | `clrscr`   | Clear the screen                            | Working           |
 | `quit`     | Quit the shell                              | Working           |
-|____________|_____________________________________________|___________________|
+
 
 
 stay tuned for further updates :)
