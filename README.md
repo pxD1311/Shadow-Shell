@@ -21,7 +21,9 @@ Commands :
 | quit     | Quit the shell                   | Working              |
 
 
-
+Compilation Commands:
+Windows -  gcc -o win_terminal main.c shell_funcs\common_funcs.c shell_funcs\win_os_funcs.c config\config.c config\os.c shell\win_shell.c
+Unix    -  (not implemented yet)
 
 stay tuned for further updates :)
 -Parth Joshi
