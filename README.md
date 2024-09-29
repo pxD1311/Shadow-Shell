@@ -1,13 +1,9 @@
 A Shell for Windows, Macos and Linux. for now windows is implemented yet.
-Commands :
 
-<<<<<<< HEAD
 Shadow shell v 1.3.1-ALPHA
 
-________________________________________________________________________________
-=======
+Commands :
 
->>>>>>> 06c879dec71d3a2460ab869c3a069af85b47de3d
 | Command    | Purpose                                     | Status            |
 |------------|---------------------------------------------|-------------------|
 | `dd`       | Display directory items                     | Working           |
