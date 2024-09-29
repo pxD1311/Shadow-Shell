@@ -1,9 +1,11 @@
 A Shell for Windows, Macos and Linux. for now windows is implemented yet.
 
+<br>
 **Shadow shell v 1.4-ALPHA**
 
+<br>
 Commands :
-
+<br>
 | Command | Args                   | Purpose                          | Status   |
 |---------|------------------------|----------------------------------|----------|
 | `dd`    | `path`                 | Display directory items          | Working  |
@@ -20,10 +22,11 @@ Commands :
 | `clrscr`| `no-args`              | Clear screen                     | Working  |
 | `quit`  | `no-args`              | Quit the shell                   | Working  |
 
-
+<br>
 **Compilation Commands:**
 **Windows** -  gcc -o win_terminal main.c shell_funcs\common_funcs.c shell_funcs\win_os_funcs.c config\config.c config\os.c shell\win_shell.c
 **Unix**    -  (not implemented yet)
 
-*stay tuned for further updates :)*
+<br>
+*stay tuned for further updates :)*<br>
 **-Parth Joshi**
