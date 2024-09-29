@@ -1,22 +1,25 @@
 A Shell for Windows, Macos and Linux. for now windows is implemented yet.
 
-Shadow shell v 1.3.1-ALPHA
+Shadow shell v 1.3.2-ALPHA
 
 Commands :
 
-| Command    | Purpose                                     | Status            |
-|------------|---------------------------------------------|-------------------|
-| `dd`       | Display directory items                     | Working           |
-| `dcd`      | Display current working directory (CWD)     | Working           |
-| `ccd`      | Change current working directory (CWD)      | Working           |
-| `mvf`      | Move a file                                 | Not implemented   |
-| `mvd`      | Move a directory                            | Not implemented   |
-| `cpf`      | Copy a file                                 | Not implemented   |
-| `cpd`      | Copy a directory                            | Not implemented   |
-| `crf`      | Create a file                               | Working           |
-| `crd`      | Create a directory                          | Working           |
-| `clrscr`   | Clear the screen                            | Working           |
-| `quit`     | Quit the shell                              | Working           |
+| Command  | Purpose                          | Status               |
+|----------|----------------------------------|----------------------|
+| dd       | Display directory items          | Working              |
+| dcd      | Display current directory (CWD)  | Working              |
+| ccd      | Change current directory (CWD)   | Working              |
+| mvf      | Move file                        | Working              |
+| mvd      | Move directory                   | Not implemented yet  |
+| cpf      | Copy file                        | Working              |
+| cpd      | Copy directory                   | Not implemented yet  |
+| crf      | Create file                      | Working              |
+| crd      | Create directory                 | Working              |
+| rmf      | Remove file                      | Working              |
+| rmd      | Remove directory                 | Not implemented yet  |
+| clrscr   | Clear screen                     | Working              |
+| quit     | Quit the shell                   | Working              |
+
 
 
 
