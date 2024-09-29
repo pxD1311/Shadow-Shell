@@ -86,6 +86,22 @@ void cmd_exec(const wchar_t* cmd)
         wprintf(L">>> Successfully Removed File <%ls>.\n", dir);
     }
 
+    // remove a directory
+    else if(!wcscmp(cmd, CMD_REMOVE_DIR))
+    {
+        wchar_t dir[MAX_PATH];
+        if (wscanf(L"%ls", dir) != 1){
+            display_error(L"Invalid Path, Can't Remove directory.");
+            return;
+        }
+        if(remove_dir(dir) != TRUE)
+        {
+            display_error(L"Invalid Path, Can't Remove directory.");
+            return;
+        }
+        wprintf(L">>> Successfully Removed Directory <%ls>.\n", dir);
+    }
+
     // copy a file from source to destination
     else if(!wcscmp(cmd, CMD_COPY_FILE))
     {
@@ -126,6 +142,48 @@ void cmd_exec(const wchar_t* cmd)
             return;
         }
         wprintf(L">>> Successfully Moved File from <%ls> to <%ls>.\n", dir_s, dir_d);
+    }
+
+// copy a directory from source to destination
+    else if(!wcscmp(cmd, CMD_COPY_DIR))
+    {
+        wchar_t dir_s[MAX_PATH];
+        wchar_t dir_d[MAX_PATH];
+        if (wscanf(L"%ls", dir_s) != 1){
+            display_error(L"Invalid Path, Can't Copy Directory.");
+            return;
+        }
+        if (wscanf(L"%ls", dir_d) != 1){
+            display_error(L"Invalid Path, Can't Copy Directory.");
+            return;
+        }
+        if(copy_dir(dir_s, dir_d) != TRUE)
+        {
+            display_error(L"Invalid Path, Can't Copy Directory.");
+            return;
+        }
+        wprintf(L">>> Successfully Copied Directory from <%ls> to <%ls>.\n", dir_s, dir_d);
+    }
+
+// move a directory from source to destination
+    else if(!wcscmp(cmd, CMD_MOVE_DIR))
+    {
+        wchar_t dir_s[MAX_PATH];
+        wchar_t dir_d[MAX_PATH];
+        if (wscanf(L"%ls", dir_s) != 1){
+            display_error(L"Invalid Path, Can't Move Directory.");
+            return;
+        }
+        if (wscanf(L"%ls", dir_d) != 1){
+            display_error(L"Invalid Path, Can't Move Directory.");
+            return;
+        }
+        if(move_dir(dir_s, dir_d) != TRUE)
+        {
+            display_error(L"Invalid Path, Can't Move Directory.");
+            return;
+        }
+        wprintf(L">>> Successfully Moved Directory from <%ls> to <%ls>.\n", dir_s, dir_d);
     }
 
     // display current working directory

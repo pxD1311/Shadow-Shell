@@ -19,6 +19,8 @@ extern const wchar_t* CMD_DISPLAY_CWD;
 extern const wchar_t* CMD_CHANGE_CWD;
 extern const wchar_t* CMD_MOVE_FILE;
 extern const wchar_t* CMD_COPY_FILE;
+extern const wchar_t* CMD_COPY_DIR;
+extern const wchar_t* CMD_MOVE_DIR;
 extern const wchar_t* CMD_CREATE_FILE;
 extern const wchar_t* CMD_CREATE_DIR;
 extern const wchar_t* CMD_CLEAR_SCREEN;

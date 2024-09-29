@@ -1,6 +1,6 @@
 A Shell for Windows, Macos and Linux. for now windows is implemented yet.
 
-Shadow shell v 1.3.2-ALPHA
+Shadow shell v 1.4-ALPHA
 
 Commands :
 
@@ -10,13 +10,13 @@ Commands :
 | dcd      | Display current directory (CWD)  | Working              |
 | ccd      | Change current directory (CWD)   | Working              |
 | mvf      | Move file                        | Working              |
-| mvd      | Move directory                   | Not implemented yet  |
+| mvd      | Move directory                   | Working              |
 | cpf      | Copy file                        | Working              |
-| cpd      | Copy directory                   | Not implemented yet  |
+| cpd      | Copy directory                   | Working              |
 | crf      | Create file                      | Working              |
 | crd      | Create directory                 | Working              |
 | rmf      | Remove file                      | Working              |
-| rmd      | Remove directory                 | Not implemented yet  |
+| rmd      | Remove directory                 | Working              |
 | clrscr   | Clear screen                     | Working              |
 | quit     | Quit the shell                   | Working              |
 
