@@ -17,9 +17,12 @@ void mainloop()
 
 void cmd_exec(const wchar_t* cmd)
 {
-    if(!wcscmp(cmd, CMD_DISPLAY_CWD))
+    // display current working directory
+    if(!wcscmp(cmd, CMD_DISPLAY_CWD)) 
         display_cwd();
-    else if(!wcscmp(cmd, CMD_CHANGE_CWD))
+
+    // change current working directory
+    else if(!wcscmp(cmd, CMD_CHANGE_CWD)) 
     {
         wchar_t dir[MAX_PATH];
         if (wscanf(L"%ls", dir) != 1 || is_path_valid(dir) == FALSE){
@@ -33,7 +36,9 @@ void cmd_exec(const wchar_t* cmd)
         }
         wprintf(L">>> Successfully Changed Current Working Directory To <%ls>.\n", get_cwd());  
     }
-    else if(!wcscmp(cmd, CMD_CREATE_FILE))
+
+    // create new file
+    else if(!wcscmp(cmd, CMD_CREATE_FILE)) 
     {
         wchar_t dir[MAX_PATH];
         if (wscanf(L"%ls", dir) != 1){
@@ -47,7 +52,9 @@ void cmd_exec(const wchar_t* cmd)
         }
         wprintf(L">>> Successfully Created File <%ls>.\n", dir);
     }
-    else if(!wcscmp(cmd, CMD_CREATE_DIR))
+
+    // create new directory
+    else if(!wcscmp(cmd, CMD_CREATE_DIR)) 
     {
         wchar_t dir[MAX_PATH];
         if (wscanf(L"%ls", dir) != 1)
@@ -62,6 +69,66 @@ void cmd_exec(const wchar_t* cmd)
         }
         wprintf(L">>> Successfully Created Directory <%ls>.\n", dir);
     }
+
+    // remove a file
+    else if(!wcscmp(cmd, CMD_REMOVE_FILE))
+    {
+        wchar_t dir[MAX_PATH];
+        if (wscanf(L"%ls", dir) != 1){
+            display_error(L"Invalid Path, Can't Remove File.");
+            return;
+        }
+        if(remove_file(dir) != TRUE)
+        {
+            display_error(L"Invalid Path, Can't Remove File.");
+            return;
+        }
+        wprintf(L">>> Successfully Removed File <%ls>.\n", dir);
+    }
+
+    // copy a file from source to destination
+    else if(!wcscmp(cmd, CMD_COPY_FILE))
+    {
+        wchar_t dir_s[MAX_PATH];
+        wchar_t dir_d[MAX_PATH];
+        if (wscanf(L"%ls", dir_s) != 1){
+            display_error(L"Invalid Path, Can't Copy File.");
+            return;
+        }
+        if (wscanf(L"%ls", dir_d) != 1){
+            display_error(L"Invalid Path, Can't Copy File.");
+            return;
+        }
+        if(copy_file(dir_s, dir_d) != TRUE)
+        {
+            display_error(L"Invalid Path, Can't Copy File.");
+            return;
+        }
+        wprintf(L">>> Successfully Copied File from <%ls> to <%ls>.\n", dir_s, dir_d);
+    }
+
+    // move a file from source to destination
+    else if(!wcscmp(cmd, CMD_MOVE_FILE))
+    {
+        wchar_t dir_s[MAX_PATH];
+        wchar_t dir_d[MAX_PATH];
+        if (wscanf(L"%ls", dir_s) != 1){
+            display_error(L"Invalid Path, Can't Move File.");
+            return;
+        }
+        if (wscanf(L"%ls", dir_d) != 1){
+            display_error(L"Invalid Path, Can't Move File.");
+            return;
+        }
+        if(move_file(dir_s, dir_d) != TRUE)
+        {
+            display_error(L"Invalid Path, Can't Move File.");
+            return;
+        }
+        wprintf(L">>> Successfully Moved File from <%ls> to <%ls>.\n", dir_s, dir_d);
+    }
+
+    // display current working directory
     else if(!wcscmp(cmd, CMD_DISPLAY_DIR))
     {
         wchar_t dir[MAX_PATH];
@@ -71,10 +138,14 @@ void cmd_exec(const wchar_t* cmd)
         }
         display_list_dir(dir);
     }
+
+    // quit the shell
     else if(!wcscmp(cmd, CMD_QUIT))
     {
         quit();
     }
+
+    // clear shell screen
     else if(!wcscmp(cmd, CMD_CLEAR_SCREEN))
     {
         if (clear_screen())
@@ -82,6 +153,8 @@ void cmd_exec(const wchar_t* cmd)
         else
             display_author();
     }
+
+    // invalid command
     else{
         display_error(L"Invalid Command.");
     }
