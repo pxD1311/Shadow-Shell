@@ -1,4 +1,4 @@
-A Shell for Windows, Macos and Linux. for now windows is implemented yet.
+A Shell for Windows, Macos and Linux. for now windows is implemented yet (unix is under development for now).
 
 Shadow shell v 1.4-ALPHA
 
@@ -24,7 +24,7 @@ Commands :
 
 Compilation Commands:<br>
 Windows   -  gcc -o win_terminal main.c shell_funcs\common_funcs.c shell_funcs\win_os_funcs.c config\config.c config\os.c shell\win_shell.c <br>
-Unix      -  (not implemented yet)<br>
+Unix      -  (Work in progress)<br>
 
 stay tuned for further updates :)
 
