@@ -334,3 +334,22 @@ BOOL remove_dir(const wchar_t *path)
 
     return RemoveDirectoryW(path);
 }
+
+BOOL display_file(const wchar_t *path)
+{
+    FILE *fptr = _wfopen(path, L"r");
+    if(fptr == NULL)
+        return FALSE;
+
+    wchar_t chr;
+    while ((chr = getwc(fptr)) != WEOF)
+    {
+        if (wprintf(L"%lc", chr) < 0)
+        {
+            fclose(fptr);
+            return FALSE;
+        }
+    }
+    fclose(fptr);
+    return TRUE;
+}

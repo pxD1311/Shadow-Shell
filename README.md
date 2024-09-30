@@ -8,6 +8,7 @@ Commands :
 |---------|------------------------|----------------------------------|----------|
 | `dd`    | `path`                 | Display directory items          | Working  |
 | `dcd`   | `no-args`              | Display current directory (CWD)  | Working  |
+| `df`    | `path`                 | Display file contents            | Working  |
 | `ccd`   | `path`                 | Change current directory (CWD)   | Working  |
 | `mvf`   | `source destination`   | Move file                        | Working  |
 | `mvd`   | `source destination`   | Move directory                   | Working  |

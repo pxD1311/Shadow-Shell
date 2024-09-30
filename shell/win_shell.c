@@ -197,6 +197,17 @@ void cmd_exec(const wchar_t* cmd)
         display_list_dir(dir);
     }
 
+    // display contents of a file
+    else if(!wcscmp(cmd, CMD_DISPLAY_FILE))
+    {
+        wchar_t dir[MAX_PATH];
+        if (wscanf(L"%ls", dir) != 1 || is_path_valid(dir) == FALSE){
+            display_error(L"Invalid Path, Can't Display File.");
+            return;
+        }
+        display_file(dir);
+    }
+
     // quit the shell
     else if(!wcscmp(cmd, CMD_QUIT))
     {

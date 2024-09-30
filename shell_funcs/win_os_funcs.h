@@ -1,3 +1,5 @@
+#pragma once
+
 #include <windows.h>
 #include "../config/config.h"
 #include "common_funcs.h"
@@ -17,6 +19,7 @@ BOOL create_directory(const wchar_t *path);
 
 BOOL copy_file(const wchar_t *source_path, const wchar_t *destination_path);
 BOOL move_file(const wchar_t *source_path, const wchar_t *destination_path);
+BOOL display_file(const wchar_t *path);
 BOOL remove_file(const wchar_t *path);
 
 BOOL copy_dir(const wchar_t *source_path, const wchar_t *destination_path);
