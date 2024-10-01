@@ -353,3 +353,37 @@ BOOL display_file(const wchar_t *path)
     fclose(fptr);
     return TRUE;
 }
+
+BOOL display_file_word_num(const wchar_t *path)
+{
+    FILE *fptr = _wfopen(path, L"r");
+    if(fptr == NULL)
+        return FALSE;
+
+    wchar_t chr;
+    int buff_len = 0;
+    while ((chr = getwc(fptr)) != WEOF)
+    {
+        buff_len++;
+    }
+
+    rewind(fptr);
+    wchar_t* buffer = (wchar_t*)malloc((buff_len+1)*sizeof(wchar_t));
+
+    if(buffer == NULL)
+    {
+        display_error(L"Insufficient memory.");
+        fclose(fptr);
+        return FALSE;
+    }
+
+    for (int i = 0; (chr = getwc(fptr)) != WEOF; i++)
+        buffer[i] = chr;
+
+    buffer[buff_len] = '\0';
+
+    wprintf(L"%d words/tokens in the file <%ls>.\n", count_word_num(buffer), path);
+    free(buffer);
+    fclose(fptr);
+    return TRUE;
+}

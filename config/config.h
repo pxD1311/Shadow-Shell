@@ -29,8 +29,8 @@ extern const wchar_t* CMD_CREATE_DIR;
 extern const wchar_t *CMD_REMOVE_FILE;
 extern const wchar_t *CMD_REMOVE_DIR;
 extern const wchar_t *CMD_DISPLAY_FILE;
+extern const wchar_t *CMD_DISPLAY_FILE_WORD_NUM;
 
 //shell
 extern const wchar_t* CMD_CLEAR_SCREEN;
 extern const wchar_t* CMD_QUIT;
-

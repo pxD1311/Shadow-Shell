@@ -43,14 +43,14 @@ wchar_t **tokenize(wchar_t *input, int *tokens, int *max_token_len)
 
     wchar_t **output = (wchar_t **)malloc(*tokens * sizeof(wchar_t*));
     if (output == NULL)
-        display_error("Insufficient memory.");
+        display_error(L"Insufficient memory.");
 
     for (int i = 0; i < *tokens; i++)
     {
         output[i] = (wchar_t *)malloc((*max_token_len + 1)*sizeof(wchar_t));
         if (output[i] == NULL)
         {
-            display_error("Insufficient memory.");
+            display_error(L"Insufficient memory.");
             for (int j = 0; j <= i; j++)
                 free(output[i]);
             free(output);
@@ -80,4 +80,19 @@ wchar_t **tokenize(wchar_t *input, int *tokens, int *max_token_len)
     }
 
     return output;
+}
+
+int count_word_num(wchar_t* str)
+{
+    int words = 0;
+    int str_len = wcslen(str);
+
+    for(int i = 0; i < str_len; i++)
+    {
+        if ((i == 0 || isspace(str[i])) && !isspace(str[i - 1]))
+            words++;
+        if (i == str_len - 1 && isspace(str[str_len - 1]))
+            words--;
+    }
+    return words;
 }
