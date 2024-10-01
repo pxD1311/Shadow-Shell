@@ -9,6 +9,7 @@ void mainloop()
         printf("<<< ");
         if (wscanf(L"%ls", cmd) != 1)
         {
+            while(getwchar() == L'\n');
             display_error(L"Invalid Command.");
         }
         cmd_exec(cmd);
@@ -236,6 +237,7 @@ void cmd_exec(const wchar_t* cmd)
 
     // invalid command
     else{
+        while(getwchar() == L'\n');
         display_error(L"Invalid Command.");
     }
 }
