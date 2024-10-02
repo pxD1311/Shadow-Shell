@@ -16,6 +16,24 @@ void display_author()
     printf("<-> Shadow Shell (Version : %s, Author : Parth)\n", VERSION );
 }
 
+void clear_input_buffer()
+{
+    while (getwchar() != L'n');
+}
+
+wchar_t* user_input()
+{
+    wchar_t* input = (wchar_t*)malloc(sizeof(wchar_t)*MAX_BUFF_LEN);
+    if(input == NULL)
+    {
+        display_error(L"Insufficient memory.");
+        return (wchar_t*)NULL; 
+    }
+    fgetws(input, MAX_BUFF_LEN, stdin);
+
+    return input;
+}
+
 wchar_t **tokenize(wchar_t *input, int *tokens, int *max_token_len)
 {
     *tokens = 0;
