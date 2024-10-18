@@ -6,31 +6,11 @@
 #include <ctype.h>
 #include <wchar.h>
 
-#include "os.h"
-#include "types.h"
+//config
+#define MAX_BUFF_LEN 1000
 
+typedef enum OPERATING_SYSTEM {WIN, APPLE, LINUX, INVALID} OS;
 extern char* VERSION;   
-extern OS current_os;
-extern unsigned long int MAX_BUFF_LEN;
-extern unsigned long int MAX_CMD_LEN;
 
-//navigation
-extern const wchar_t* CMD_DISPLAY_DIR;
-extern const wchar_t* CMD_DISPLAY_CWD;
-extern const wchar_t* CMD_CHANGE_CWD;
-
-//file
-extern const wchar_t* CMD_MOVE_FILE;
-extern const wchar_t* CMD_COPY_FILE;
-extern const wchar_t* CMD_COPY_DIR;
-extern const wchar_t* CMD_MOVE_DIR;
-extern const wchar_t* CMD_CREATE_FILE;
-extern const wchar_t* CMD_CREATE_DIR;
-extern const wchar_t *CMD_REMOVE_FILE;
-extern const wchar_t *CMD_REMOVE_DIR;
-extern const wchar_t *CMD_DISPLAY_FILE;
-extern const wchar_t *CMD_DISPLAY_FILE_WORD_NUM;
-
-//shell
-extern const wchar_t* CMD_CLEAR_SCREEN;
-extern const wchar_t* CMD_QUIT;
+extern wchar_t* WIN_COMMANDS_PATH;   
+extern wchar_t* UNIX_COMMANDS_PATH;   

@@ -18,7 +18,7 @@ void display_author()
 
 void clear_input_buffer()
 {
-    while (getwchar() != L'n');
+    while (getwchar() != L'\n');
 }
 
 wchar_t* user_input()
