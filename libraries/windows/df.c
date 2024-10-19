@@ -11,7 +11,7 @@ int wmain(int argc, wchar_t* argv[])
                 display_error(L"Invalid Path.");
                 continue;
             }
-            wprintf(L"file <%ls>\n", argv[i]);
+            wprintf(L"\n\nfile <%ls>\n", argv[i]);
             if(!display_file(argv[i]))
                 wprintf(L"Error %lu : printing file %ls.\n", GetLastError(), argv[i]);
         }

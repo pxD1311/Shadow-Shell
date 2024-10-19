@@ -2,9 +2,6 @@
 
 char *VERSION = "1.5.0-ALPHA";
 
-wchar_t* WIN_COMMANDS_PATH = L"commands/windows/";   
-wchar_t* UNIX_COMMANDS_PATH = L"commands/unix/"; 
-
 //funcs
 OS get_os()
 {

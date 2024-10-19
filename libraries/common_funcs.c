@@ -114,3 +114,16 @@ int count_word_num(wchar_t* str)
     }
     return words;
 }
+
+wchar_t *char_to_wchar(char* str)
+{
+    int len = mbstowcs(NULL, str, 0);
+    if (len < 0) 
+        return (wchar_t*)NULL;
+    wchar_t *wstr = (wchar_t*)malloc(sizeof(wchar_t)*(len+1));
+    if (wstr == NULL) 
+        return (wchar_t*)NULL;
+    mbstowcs(wstr, str, len);
+    wstr[len] = L'\0';
+    return wstr;
+}

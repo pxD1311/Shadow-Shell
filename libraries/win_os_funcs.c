@@ -36,9 +36,27 @@ BOOL is_path_valid(const wchar_t *path)
 }
 
 // sets current working directory to the given path
-BOOL set_cwd(const wchar_t *path)
-{
-    return (is_path_valid(path) && SetCurrentDirectoryW(path));
+BOOL set_cwd(const wchar_t *path) {
+    if (!is_path_valid(path)) {
+        wprintf(L"Invalid path: <%ls>\n", path);
+        return FALSE;
+    }
+
+    if (!SetCurrentDirectoryW(path)) {
+        unsigned long error = GetLastError();
+        wprintf(L"Command failed. Error code: %lu\n", error);
+
+        if (error == ERROR_FILE_NOT_FOUND) {
+            display_error(L"Directory not found.\n");
+        } else if (error == ERROR_ACCESS_DENIED) {
+            display_error(L"Access denied.\n");
+        } else {
+            display_error(L"Unknown error.\n");
+        }
+        return FALSE;
+    }
+
+    return TRUE;
 }
 
 // gets total number of items/objects, directoriesand files in a given directory,

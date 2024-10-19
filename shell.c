@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void win_shell()
+void win_shell(wchar_t* WIN_COMMANDS_PATH)
 {
     int num_token = 0;
     int max_token_len = 0;
@@ -26,8 +26,25 @@ void win_shell()
         if(num_token == 0)
             continue;
 
-        //for quitting the shell
-        if(!wcscmp(input_tokens[0], L"quit"))
+        //for changing the current directroy.
+        if(!wcscmp(input_tokens[0], L"ccd"))
+        {
+            if (num_token < 2)
+                wprintf(L"<-> Usage: program <path>\n");
+            if (set_cwd(input_tokens[1]))
+                wprintf(L">>> Successfully changed current working directory to <%ls>.\n", input_tokens[1]);
+            else
+                wprintf(L">>> Failed to change current working directory to <%ls>.\n", input_tokens[1]);
+
+            free(input);
+            for (int i = 0; i < num_token; i++)
+                free(input_tokens[i]);
+            free(input_tokens);
+            continue;
+        }
+
+        //for quitting the shell.
+        else if(!wcscmp(input_tokens[0], L"quit"))
         {
             free(input);
             for (int i = 0; i < num_token; i++)
@@ -36,11 +53,12 @@ void win_shell()
             quit();
         }
 
-        swprintf(command_path, MAX_BUFF_LEN, L"%ls/%ls.exe", WIN_COMMANDS_PATH, input_tokens[0]);
+        //processing the commands which are in different files.
+        swprintf(command_path, MAX_BUFF_LEN, L"%ls\\commands\\windows\\%ls.exe", WIN_COMMANDS_PATH, input_tokens[0]);
 
         if(!is_path_valid(command_path))
         {
-            printf(">-< Invalid command <%s>\n", input_tokens[0]);
+            wprintf(L">-< Invalid command <%s>\n", input_tokens[0]);
             free(input);
             for (int i = 0; i < num_token; i++)
                 free(input_tokens[i]);
