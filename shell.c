@@ -21,7 +21,17 @@ void win_shell(wchar_t* WIN_COMMANDS_PATH)
     {
         printf("<<< ");
         input = user_input();
+        if (input == NULL) {
+            wprintf(L">-< Error reading input\n");
+            continue;
+        }
+
         input_tokens = tokenize(input, &num_token, &max_token_len);
+        if (input_tokens == NULL) {
+            wprintf(L">-< Error tokenizing input\n");
+            free(input);
+            continue;
+        }
 
         if(num_token == 0)
             continue;
@@ -31,7 +41,7 @@ void win_shell(wchar_t* WIN_COMMANDS_PATH)
         {
             if (num_token < 2)
                 wprintf(L"<-> Usage: program <path>\n");
-            if (set_cwd(input_tokens[1]))
+            else if (set_cwd(input_tokens[1]))
                 wprintf(L">>> Successfully changed current working directory to <%ls>.\n", input_tokens[1]);
             else
                 wprintf(L">>> Failed to change current working directory to <%ls>.\n", input_tokens[1]);

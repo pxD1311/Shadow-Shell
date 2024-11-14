@@ -1,6 +1,6 @@
 A Shell for Windows, Macos and Linux. for now windows is implemented yet (unix is under development for now).
 
-Shadow shell v 1.5.0-ALPHA
+Shadow shell v 1.5.2-ALPHA
 
 Commands :
 

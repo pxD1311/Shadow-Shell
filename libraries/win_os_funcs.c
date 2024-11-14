@@ -301,8 +301,7 @@ BOOL move_dir(const wchar_t *source_path, const wchar_t *destination_path)
 {
     if (copy_dir(source_path, destination_path) == TRUE)
         return remove_dir(source_path);
-    else
-        return FALSE;
+    return FALSE;
 }
 
 BOOL remove_dir(const wchar_t *path)
@@ -368,6 +367,7 @@ BOOL display_file(const wchar_t *path)
             return FALSE;
         }
     }
+    printf("\n\n");
     fclose(fptr);
     return TRUE;
 }

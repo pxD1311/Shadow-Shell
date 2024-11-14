@@ -1,6 +1,6 @@
 @echo off
-set source_dir=libraries/windows
-set target_dir=commands/windows
+set source_dir=libraries\windows
+set target_dir=commands\windows
 
 REM Check if target directory exists; if not, create it
 if not exist %target_dir% mkdir %target_dir%
@@ -14,7 +14,7 @@ for %%f in (%source_dir%\*.c) do (
 )
 
 echo Compiling file : main.c
-gcc -o shadowShell.exe main.c shell.c config/config.c .\libraries\common_funcs.c .\libraries\win_os_funcs.c
+gcc -o shadowShell.exe main.c shell.c config\config.c .\libraries\common_funcs.c .\libraries\win_os_funcs.c
 
 echo Compilation complete.
 pause
