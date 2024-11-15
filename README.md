@@ -25,7 +25,7 @@ Commands :
 
 
 Compilation Commands:<br>
-Windows   -  .\win_compile.bat
+Windows   -  .\win_compile.bat<br>
 Unix      -  ./unix_compile.sh<br>
 
 stay tuned for further updates :)
