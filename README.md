@@ -1,6 +1,6 @@
-A Shell for Windows, Macos and Linux. for now windows is implemented yet (unix is under development for now).
+A Shell for Windows, Macos and Linux. (Unix is buggy and under development, dont use it)
 
-Shadow shell v 1.5.2-ALPHA
+Shadow shell v 1.6.0-ALPHA
 
 Commands :
 
@@ -25,8 +25,8 @@ Commands :
 
 
 Compilation Commands:<br>
-Windows   -  gcc -o shadowShell.exe main.c shell.c config/config.c .\libraries\common_funcs.c .\libraries\win_os_funcs.c<br>
-Unix      -  (Work in progress)<br>
+Windows   -  .\win_compile.bat
+Unix      -  ./unix_compile.sh<br>
 
 stay tuned for further updates :)
 

@@ -19,7 +19,6 @@ wchar_t *get_cwd()
 void display_cwd()
 {
     wchar_t *cwd = get_cwd();
-    // NULL is used to indicate that get_cwd function failed.
     if (cwd == NULL)
     {
         display_error(L"Failed to get current working directory.\n");
@@ -158,6 +157,16 @@ WIN32_FIND_DATAW **get_list_dir(const wchar_t *search_path)
     return dir;
 }
 
+// Function to format FILETIME into a human-readable string
+void FileTimeToString(FILETIME *ft, wchar_t *buffer, size_t bufferSize)
+{
+    SYSTEMTIME st;
+    FileTimeToSystemTime(ft, &st);
+    swprintf(buffer, bufferSize, L"%02d/%02d/%d %02d:%02d:%02d",
+        st.wMonth, st.wDay, st.wYear, st.wHour, st.wMinute, st.wSecond);
+}
+
+// Function to display directory contents along with additional file details
 void display_list_dir(const wchar_t *path)
 {
     WIN32_FIND_DATAW **dir = get_list_dir(path);
@@ -165,12 +174,50 @@ void display_list_dir(const wchar_t *path)
     get_dir_items(path, &objs, &files, &dirs);
 
     wprintf(L">>> Dir : <%ls>\n", path);
+    wprintf(L"\n%-4s | %-30s | %-10s | %-15s | %-19s | %-19s | %-19s |\n", 
+            L"Index", L"Name", L"Type", L"Size", L"Created", L"Last Accessed", L"Last Modified");
+    wprintf(L"-----------------------------------------------------------------------------------------------------------------------------------------\n");
+
     for (int i = 0; i < objs; i++)
     {
         if (dir[i] != NULL && dir[i]->cFileName != NULL)
-            wprintf(L"%d - %ls\n", i, dir[i]->cFileName);
+        {
+            // File type (file or directory)
+            wchar_t type[10];
+            if (dir[i]->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+                wcscpy(type, L"Directory");
+            else
+                wcscpy(type, L"File");
+
+            // File size (or '-' for directories)
+            wchar_t size[20];
+            if (dir[i]->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+                wcscpy(size, L"-");
+            else
+            {
+                unsigned long long fileSize = ((unsigned long long)dir[i]->nFileSizeHigh << 32) | dir[i]->nFileSizeLow;
+                swprintf(size, sizeof(size)/sizeof(wchar_t), L"%llu bytes", fileSize);
+            }
+
+            // Creation time
+            wchar_t creationTime[20];
+            FileTimeToString(&dir[i]->ftCreationTime, creationTime, sizeof(creationTime)/sizeof(wchar_t));
+
+            // Last access time
+            wchar_t lastAccessTime[20];
+            FileTimeToString(&dir[i]->ftLastAccessTime, lastAccessTime, sizeof(lastAccessTime)/sizeof(wchar_t));
+
+            // Last write time
+            wchar_t lastWriteTime[20];
+            FileTimeToString(&dir[i]->ftLastWriteTime, lastWriteTime, sizeof(lastWriteTime)/sizeof(wchar_t));
+
+            // Print file details in table format
+            wprintf(L"%-5d | %-30s | %-10s | %-15s | %-17s | %-17s | %-10s |\n", 
+                    i, dir[i]->cFileName, type, size, creationTime, lastAccessTime, lastWriteTime);
+        }
     }
-    printf("FILES : %d    DIRECTORIES : %d    TOTAL : %d\n", files, dirs, objs);
+
+    wprintf(L"\nFILES : %d    DIRECTORIES : %d    TOTAL : %d\n", files, dirs, objs);
 }
 
 // creates a file in the given path

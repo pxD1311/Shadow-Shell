@@ -1,6 +1,6 @@
 #include "config.h"
 
-char *VERSION = "1.5.2-ALPHA";
+char *VERSION = "1.6.0-ALPHA";
 
 //funcs
 OS get_os()

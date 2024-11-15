@@ -2,7 +2,6 @@
 
 int wmain(int argc, wchar_t *argv[])
 {
-
     if (argc >= 3)
     {
         if (!is_path_valid(argv[1]))
